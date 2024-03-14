@@ -1,0 +1,125 @@
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+  	<title>Contact Form 02</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+	</head>
+	<body>
+		<div class="outer_cont">
+			<form  class="form_style" method="POST">
+				<div class="container">
+				<h1 id="head1">Register</h1>
+				<p id="heading_para">Please fill in this form to create an account.</p>
+				<hr>
+					
+				
+				<label for="name"><b>Name</b></label>
+				<input type="text" class="form-control" name="name" id="name" placeholder="Name" style="font-size:14px;" required>
+				
+
+				<label for="email"><b>Email</b></label>
+				<input type="text" placeholder="Enter Email" name="email" id="email" style="font-size:14px;" required >
+			
+				<label for="passwords"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="passwords" id="paswords" style="font-size:14px;" required>
+			
+				<label for="repeat_password"><b>Repeat Password</b></label>
+				<input type="password" placeholder="Repeat Password" name="repeat_password" id="repeat_password" style="font-size:14px;" required>
+				<hr>
+			
+				<p style="font-size:14px;">By creating an account you agree to our <a href="#" style="font-size:14px;">Terms & Privacy</a>.</p>
+				<button type="submit" class="registerbtn">Register</button>
+				</div>
+			
+				<div class="container signin">
+				<p style="font-size:14px;">Already have an account? <a href="#" style="font-size:14px;">Sign in</a>.</p>
+				</div>
+		  	</form>
+		</div>
+	<footer>
+			<div class="text_footer">©Ditro InfoTech Pvt. Ltd</div>
+	</footer>
+	</body>
+</html> -->
+
+
+
+<!-- ******************************************************************************************************************************** -->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Login - Registration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <div class="outer_cont">
+        <form class="form_style" method="POST">
+            <div class="container">
+                <h1 id="head1">Register</h1>
+                <p id="heading_para">Please fill in this form to create an account.</p>
+                <hr>
+
+                <label for="name"><b>Name</b></label>
+                <input type="text" class="form-control" name="name" id="name"  placeholder="Name" style="font-size:14px;" value="{{ request.form['name'] if request.form['name'] else '' }}">
+                {% for message in get_flashed_messages(with_categories=true) %}
+                    {% if message[0] == 'error_name' %}
+                        <span style="color: red;">{{ message[1] }}</span><br>
+                    {% endif %}
+                {% endfor %}
+
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" id="email"  style="font-size:14px;" value="{{ request.form['email'] if request.form['email'] else '' }}">
+                {% for message in get_flashed_messages(with_categories=true) %}
+                    {% if message[0] == 'error_email' %}
+                        <span style="color: red;">{{ message[1] }}</span><br>
+                    {% endif %}
+                {% endfor %}
+
+                <label for="passwords"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="passwords" id="passwords" style="font-size:14px;">
+                {% for message in get_flashed_messages(with_categories=true) %}
+                    {% if message[0] == 'error_password' %}
+                        <span style="color: red;">{{ message[1] }}</span><br>
+                    {% endif %}
+                {% endfor %}
+
+                <label for="repeat_password"><b>Repeat Password</b></label>
+                <input type="password" placeholder="Repeat Password" name="repeat_password" id="repeat_password" style="font-size:14px;">
+                {% for message in get_flashed_messages(with_categories=true) %}
+                    {% if message[0] == 'error_password' %}
+                        <span style="color: red;">{{ message[1] }}</span><br>
+                    {% endif %}
+                {% endfor %}
+
+                <p style="font-size:14px; text-align: center;">Already have an account? <a href="{{ url_for('signin') }}" style="font-size:14px;">Sign in</a>.</p>
+
+                <button type="submit" class="registerbtn">Register</button>
+            </div>
+        
+        </form>
+    </div>
+<footer>
+        <div class="text_footer">©Ditro InfoTech Pvt. Ltd</div>
+</footer>
+
+</body>
+</html>
+

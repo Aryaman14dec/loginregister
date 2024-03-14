@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Sign In</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <div class="outer_cont">
+        <form class="form_style" method="POST">
+            <div class="container">
+                <h1 id="head1">Sign In</h1>
+                <p id="heading_para">Please fill in this form to sign in to your account.</p>
+                <hr>
+                
+                
+                <label for="signin_email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" id="signin_email"  style="font-size:14px;" value="{{ request.form['email'] if request.form['email'] else '' }}" >
+                
+                <label for="signin_password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" id="signin_password" style="font-size:14px;" >
+                
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% for category, message in messages %}
+                        {% if category == 'error' %}
+                            <span style="color: red;">{{ message }}</span><br>
+
+                        {% elif category == 'success' %}
+                            <span class="success-message" style="color: green;">{{ message }}</span><br>
+                        {% endif %}
+                    {% endfor %}
+                {% endwith %} 
+                
+                <button type="submit" class="registerbtn" name="signin">Sign In</button>
+            </div>
+
+            <p style="font-size:14px; text-align: center;">Forgot <a href="{{ url_for('forgot') }}" style="font-size:14px;">Password</a>.</p>
+          
+            <p style="font-size:14px; text-align: center;">New account? <a href="{{ url_for('registration') }}" style="font-size:14px;">Register</a>.</p>
+
+        </form>
+    </div>
+    <footer>
+        <div class="text_footer" style="text-align: center;">©Ditro InfoTech Pvt. Ltd</div>
+    </footer>
+</body>
+</html>

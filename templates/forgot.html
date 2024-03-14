@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Forgot Password</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <style>
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.086), rgba(255, 255, 255, 0.102)), url('https://cdn.wallpapersafari.com/32/22/mRBwWX.jpg') ;
+            background-repeat: no-repeat;
+        }
+        .registerbtn{
+            color: #ffffff;
+            background-image: linear-gradient(to bottom right, #0f3fff,rgb(0, 0, 0) );
+            font-family: 'Times New Roman', Times, serif;
+            border-radius: 0.3em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+            font-size: 15px;
+            
+            box-shadow: 6px 6px 12px #8093fe, -6px -6px 12px #667aee;
+            
+        }
+    </style>
+    <div class="outer_cont">
+        <form class="form_style" method="POST" action="{{ url_for('forgot') }}">
+            <div class="container">
+                <h1 id="head1">Forgot Password</h1>
+                <p id="heading_para">Enter the email address and we will send you a link to reset your password.</p>
+                <hr>
+                <label for="forgot_email"><b>Email</b></label>
+                <input type="text" placeholder="Enter Email" name="email" id="email"  style="font-size:14px;" required >
+                    
+                <button type="submit" class="registerbtn" id="forgot_pass_btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <div class="text_footer" style="text-align: center;">©Ditro InfoTech Pvt. Ltd</div>
+    </footer>
+
+    <script>
+        document.getElementById('forgot_pass_btn').addEventListener('click', function() {
+            alert('Link has been sent to your email address for resetting password check your inbox!');
+        });
+    </script>
+</body>
+</html>
+
+
+
